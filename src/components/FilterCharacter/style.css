@@ -1,0 +1,41 @@
+.Filter__Wrapper{
+    display: flex;
+    flex-direction: column;
+    padding: 1.875rem;
+    background: rgb(32, 35, 41);
+}
+
+.Filter__Wrapper_Title{
+    color: rgb(255, 152, 0);
+    font-size: 2rem;
+}
+
+.Form__Wrapper_container{
+    display: flex;
+    align-items: center;
+}
+
+.Input__Wrapper{
+    display: flex;
+    align-items: center;
+}
+
+.Label__InputText{
+    color: rgb(158, 158, 158);
+    margin-right: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.Input__SearchText{
+    border: 1px solid rgb(68, 68, 68);
+    background-color: #303030;
+    border-radius: 4px;
+    padding: 8px;
+    color: rgb(255, 152, 0);
+    font-size: 1.2rem;
+}
+
+.Input__SearchText:focus{
+    outline: none;
+}

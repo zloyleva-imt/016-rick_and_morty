@@ -3,6 +3,7 @@ import './App.css';
 
 import Header from './components/Header'
 import Catalog from './components/Catalog'
+import FilterCharacter from './components/FilterCharacter'
 import axios from 'axios';
 
 class App extends Component {
@@ -19,9 +20,11 @@ class App extends Component {
         return (
             <main>
 
-              <Header />
+                <Header />
 
-              <Catalog characters={characters}/>
+                <FilterCharacter />
+
+                <Catalog characters={characters}/>
 
             </main>
         );
