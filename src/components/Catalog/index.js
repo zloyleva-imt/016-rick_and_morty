@@ -1,10 +1,13 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
+import assignPropTypes from 'assign-prop-types';
 import './style.css';
 
 import CharacterCard from '../CharacterCard'
 
-export default ({characters}) => {
+export default assignPropTypes({
+    characters: PropTypes.array.isRequired,
+})(({characters}) => {
     return (
         <section className="Home__ShowcaseWrapper">
             <div className="Home__ShowcaseInner">
@@ -16,4 +19,4 @@ export default ({characters}) => {
             </div>
         </section>
     );
-}
+})
