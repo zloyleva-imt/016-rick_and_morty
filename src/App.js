@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 
 import Header from './components/Header'
+import Catalog from './components/Catalog'
 
 class App extends Component {
   render() {
@@ -10,7 +11,7 @@ class App extends Component {
 
           <Header />
 
-          <section></section>
+          <Catalog />
 
         </main>
     );
