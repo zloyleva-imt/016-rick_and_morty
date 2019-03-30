@@ -1,8 +1,18 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
+import assignPropTypes from 'assign-prop-types';
 import './style.css';
 
-export default (props) => {
+export default assignPropTypes({
+    image: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    status: PropTypes.string.isRequired,
+    species: PropTypes.string.isRequired,
+    gender: PropTypes.string.isRequired,
+    origin: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+})((props) => {
 
     const {image, name, id, status, species, gender, origin, location} = props;
 
@@ -44,4 +54,4 @@ export default (props) => {
 
         </article>
     );
-}
+});
