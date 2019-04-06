@@ -13,6 +13,17 @@
 .Form__Wrapper_container{
     display: flex;
     align-items: center;
+    justify-content: space-between;
+}
+
+.Label__For_Radio{
+    color: rgb(158, 158, 158);
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+.Label__For_Radio::first-letter{
+    text-transform: uppercase;
 }
 
 .Input__Wrapper{
@@ -27,7 +38,7 @@
     cursor: pointer;
 }
 
-.Input__SearchText{
+.Input__SearchText,.Btn__Filter_data{
     border: 1px solid rgb(68, 68, 68);
     background-color: #303030;
     border-radius: 4px;
@@ -38,4 +49,12 @@
 
 .Input__SearchText:focus{
     outline: none;
+}
+
+.Btn__Filter_data{
+    padding: 8px 20px;
+    cursor: pointer;
+}
+.Btn__Filter_data:hover{
+    background-color: rgb(68, 68, 68);
 }

@@ -12,6 +12,7 @@ export default () => {
                     <input id="search_name" type="text" className="Input__SearchText" placeholder="Enter name of character"/>
                 </div>
                 <div className="Input__Wrapper">
+                    <div className="Label__For_Radio">gender:</div>
                     <label className="Label__InputText">Male
                         <input type="radio" className="Input__Radio_select" name="gender"/>
                     </label>
@@ -25,6 +26,7 @@ export default () => {
                         <input type="radio" className="Input__Radio_select" name="gender"/>
                     </label>
                 </div>
+                <button className="Btn__Filter_data">Filter</button>
             </form>
         </div>
     );
