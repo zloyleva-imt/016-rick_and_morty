@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 
+import Menu from './components/Menu'
 import Header from './components/Header'
 import Catalog from './components/Catalog'
 import FilterCharacter from './components/FilterCharacter'
@@ -24,6 +25,8 @@ class App extends Component {
 
         return (
             <main>
+
+                <Menu />
 
                 <Header />
 
