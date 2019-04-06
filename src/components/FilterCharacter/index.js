@@ -4,12 +4,12 @@ import './style.css';
 
 export default (props) => {
 
-    const {foo} = props;
+    const {filterCharacters} = props;
 
     return (
         <div className="Filter__Wrapper">
             <h2 className="Filter__Wrapper_Title">Search characters</h2>
-            <form action="" className="Form__Wrapper_container" onSubmit={(event) => {submitFilterHandler(event,foo)}}>
+            <form action="" className="Form__Wrapper_container" onSubmit={(event) => {submitFilterHandler(event,filterCharacters)}}>
                 <div className="Input__Wrapper">
                     <label htmlFor="search_name" className="Label__InputText">Name:</label>
                     <input id="search_name" type="text" className="Input__SearchText" placeholder="Enter name of character"/>
@@ -35,7 +35,7 @@ export default (props) => {
     );
 }
 
-const submitFilterHandler = (e, foo) => {
+const submitFilterHandler = (e, filterCharacters) => {
     console.log("submitFilterHandler");
     e.preventDefault();
 
@@ -43,7 +43,12 @@ const submitFilterHandler = (e, foo) => {
         const search = getSearchValue(e);
         const gender = getRadioValue(e);
 
-        foo(search, gender);
+        const o = {};
+
+        if(search){o.name = search}
+        if(gender){o.gender = gender}
+
+        filterCharacters(o);
     }
 
 };

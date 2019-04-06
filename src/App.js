@@ -8,6 +8,11 @@ import axios from 'axios';
 
 class App extends Component {
 
+    constructor(props){
+        super(props);
+
+        this.filterCharacters = this.filterCharacters.bind(this);
+    }
     state = {
         apiUrl:"https://rickandmortyapi.com/api/character/",
         characters: [],
@@ -22,7 +27,7 @@ class App extends Component {
 
                 <Header />
 
-                <FilterCharacter foo={this.foo}/>
+                <FilterCharacter foo={this.filterCharacters}/>
 
                 <Catalog characters={characters}/>
 
@@ -32,6 +37,22 @@ class App extends Component {
 
     componentDidMount() {
         const {apiUrl} = this.state;
+        this.fetchApiData(apiUrl);
+    }
+
+    filterCharacters(filterObject){
+        const queryArr = [];
+        for(const key in filterObject){
+            queryArr.push(`${key}=${filterObject[key]}`);
+        }
+
+        const query = "?" + queryArr.join("&");
+
+        const {apiUrl} = this.state;
+        this.fetchApiData(apiUrl + query);
+    }
+
+    fetchApiData(apiUrl){
         axios.get(apiUrl)
             .then(res => {
                 console.log(res.data);
@@ -40,10 +61,6 @@ class App extends Component {
                     characters: res.data.results
                 });
             });
-    }
-
-    foo(){
-        console.log("FOOOO!!");
     }
 
 }
