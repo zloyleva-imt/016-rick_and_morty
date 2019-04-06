@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import './style.css';
 
-export default class FilterCharcter extends Component {
+export default class FilterCharacter extends Component {
 
     state = {
         name: "",
@@ -49,29 +49,29 @@ export default class FilterCharcter extends Component {
     }
 
     changeGenderHandler = (e) => {
-        console.log(e.target.value);
-    }
+        this.setState({
+            gender: e.target.value
+        });
+    };
 
     inputNameHandler = (e) => {
-        console.log(e.target.value);
-
         this.setState({
             name: e.target.value
-        })
+        });
     };
 
     submitFilterHandler = (e, filterCharacters) => {
         console.log("submitFilterHandler");
         e.preventDefault();
 
-        if (this.hasDataToFilter(e)) {
-            const search = this.getSearchValue(e);
-            const gender = this.getRadioValue(e);
+        const {name, gender} = this.state;
+
+        if (this.hasDataToFilter(this.state)) {
 
             const o = {};
 
-            if (search) {
-                o.name = search
+            if (name) {
+                o.name = name
             }
             if (gender) {
                 o.gender = gender
@@ -82,13 +82,5 @@ export default class FilterCharcter extends Component {
 
     };
 
-    getRadioValue = (e) => {
-        return [...e.target].filter(el => el.checked).length > 0 ? [...e.target].filter(el => el.checked)[0].value : ""
-    };
-
-    getSearchValue = (e) => {
-        return e.target[0].value;
-    };
-
-    hasDataToFilter = (e) => this.getSearchValue(e) || this.getRadioValue(e);
+    hasDataToFilter = ({name, gender}) => name || gender;
 }

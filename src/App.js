@@ -27,7 +27,7 @@ class App extends Component {
 
                 <Header />
 
-                <FilterCharacter foo={this.filterCharacters}/>
+                <FilterCharacter filterCharacters={this.filterCharacters}/>
 
                 <Catalog characters={characters}/>
 
