@@ -2,11 +2,14 @@ import React from 'react';
 
 import './style.css';
 
-export default () => {
+export default (props) => {
+
+    const {foo} = props;
+
     return (
         <div className="Filter__Wrapper">
             <h2 className="Filter__Wrapper_Title">Search characters</h2>
-            <form action="" className="Form__Wrapper_container" onSubmit={submitFilterHandler}>
+            <form action="" className="Form__Wrapper_container" onSubmit={(event) => {submitFilterHandler(event,foo)}}>
                 <div className="Input__Wrapper">
                     <label htmlFor="search_name" className="Label__InputText">Name:</label>
                     <input id="search_name" type="text" className="Input__SearchText" placeholder="Enter name of character"/>
@@ -32,13 +35,15 @@ export default () => {
     );
 }
 
-const submitFilterHandler = (e) => {
+const submitFilterHandler = (e, foo) => {
     console.log("submitFilterHandler");
     e.preventDefault();
 
     if(hasDataToFilter(e)){
-        console.log(getSearchValue(e));
-        console.log(getRadioValue(e));
+        const search = getSearchValue(e);
+        const gender = getRadioValue(e);
+
+        foo(search, gender);
     }
 
 };

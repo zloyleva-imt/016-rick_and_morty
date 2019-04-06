@@ -22,7 +22,7 @@ class App extends Component {
 
                 <Header />
 
-                <FilterCharacter />
+                <FilterCharacter foo={this.foo}/>
 
                 <Catalog characters={characters}/>
 
@@ -38,8 +38,12 @@ class App extends Component {
 
                 this.setState({
                     characters: res.data.results
-                })
+                });
             });
+    }
+
+    foo(){
+        console.log("FOOOO!!");
     }
 
 }
