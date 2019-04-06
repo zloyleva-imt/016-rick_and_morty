@@ -6,7 +6,7 @@ export default () => {
     return (
         <div className="Filter__Wrapper">
             <h2 className="Filter__Wrapper_Title">Search characters</h2>
-            <form action="" className="Form__Wrapper_container">
+            <form action="" className="Form__Wrapper_container" onSubmit={submitFilterHandler}>
                 <div className="Input__Wrapper">
                     <label htmlFor="search_name" className="Label__InputText">Name:</label>
                     <input id="search_name" type="text" className="Input__SearchText" placeholder="Enter name of character"/>
@@ -14,16 +14,16 @@ export default () => {
                 <div className="Input__Wrapper">
                     <div className="Label__For_Radio">gender:</div>
                     <label className="Label__InputText">Male
-                        <input type="radio" className="Input__Radio_select" name="gender"/>
+                        <input type="radio" className="Input__Radio_select" value="male" name="gender"/>
                     </label>
                     <label className="Label__InputText">Female
-                        <input type="radio" className="Input__Radio_select" name="gender"/>
+                        <input type="radio" className="Input__Radio_select" value="female" name="gender"/>
                     </label>
                     <label className="Label__InputText">Genderless
-                        <input type="radio" className="Input__Radio_select" name="gender"/>
+                        <input type="radio" className="Input__Radio_select" value="genderless" name="gender"/>
                     </label>
                     <label className="Label__InputText">Unknown
-                        <input type="radio" className="Input__Radio_select" name="gender"/>
+                        <input type="radio" className="Input__Radio_select" value="unknown" name="gender"/>
                     </label>
                 </div>
                 <button className="Btn__Filter_data">Filter</button>
@@ -31,3 +31,24 @@ export default () => {
         </div>
     );
 }
+
+const submitFilterHandler = (e) => {
+    console.log("submitFilterHandler");
+    e.preventDefault();
+
+    if(hasDataToFilter(e)){
+        console.log(getSearchValue(e));
+        console.log(getRadioValue(e));
+    }
+
+};
+
+const getRadioValue = (e) => {
+    return [...e.target].filter(el => el.checked).length > 0 ? [...e.target].filter(el => el.checked)[0].value:""
+};
+
+const getSearchValue = (e) => {
+    return e.target[0].value;
+};
+
+const hasDataToFilter = (e) => getSearchValue(e) || getRadioValue(e);
